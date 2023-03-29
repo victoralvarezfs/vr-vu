@@ -10,6 +10,9 @@ export class HamburguerMenu extends Behaviour
     expand? : EventList;
     @serializable(EventList)
     collapse? : EventList;
+    @serializable(EventList)
+    idleDelay? : EventList;
+
 
     switchMenu()
     {

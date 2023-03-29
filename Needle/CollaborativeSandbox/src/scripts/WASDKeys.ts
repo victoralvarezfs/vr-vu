@@ -1,5 +1,5 @@
 import { Behaviour, GameObject } from "@needle-tools/engine";
-import { Camera } from "@needle-tools/engine/engine-components/Camera";
+import { Camera } from "@needle-tools/engine/src/engine-components/Camera";
 import { OrbitControls as ThreeOrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { Object3D } from "three";
 //import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.122/examples/jsm/controls/OrbitControls.js';

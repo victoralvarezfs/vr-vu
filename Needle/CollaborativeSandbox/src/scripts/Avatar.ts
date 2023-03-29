@@ -1,13 +1,13 @@
 import { Behaviour, GameObject, serializable } from "@needle-tools/engine";
 import * as THREE from "three";
-import { AvatarMarker } from "@needle-tools/engine/engine-components/WebXRAvatar";
-import { WaitForSeconds } from "@needle-tools/engine/engine/engine_coroutine";
-import { IModel, SendQueue } from "@needle-tools/engine/engine/engine_networking_types";
-import { isModuleNamespaceObject } from "util/types";
+import { AvatarMarker } from "@needle-tools/engine/src/engine-components/WebXRAvatar";
+import { WaitForSeconds } from "@needle-tools/engine/src/engine/engine_coroutine";
+import { IModel, SendQueue } from "@needle-tools/engine/src/engine/engine_networking_types";
 import { AvatarColor } from "./AvatarColor";
-//import { delay } from "@needle-tools/engine/src/engine/engine_utils";
-import { delay } from "@needle-tools/engine/node_modules/core-js/library/fn/delay.js";
-import { Console } from "console";
+import { delay } from "@needle-tools/engine/src/engine/engine_utils";
+//import { delay } from "@needle-tools/engine/node_modules/core-js/library/fn/delay.js";
+//import { Console } from "console";
+//import { isModuleNamespaceObject } from "util/types";
 
 export class AvatarColorUpdate implements IModel{
     guid : string = "";
@@ -43,14 +43,13 @@ export class Avatar extends Behaviour
         //this.startCoroutine(this.waitForConnection());
         await delay(1000);
         this.context.connection.beginListen("test", (data) => {
-            console.log(data);
+            console.log("received: "+data);
         });
         const myData = {
             time: Date.now(),
         };
         console.log("SEND");
-        this.context.connection.send("test", myData);
-        
+        this.context.connection.send("test", myData);        
     }
 
     

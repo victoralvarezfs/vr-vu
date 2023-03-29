@@ -1,6 +1,6 @@
 import { Behaviour, serializable, AssetReference, GameObject, serializeable } from "@needle-tools/engine";
-import { InputField } from "@needle-tools/engine/engine-components/ui/InputField";
-import { getParam, setParamWithoutReload } from "@needle-tools/engine/engine/engine_utils";
+import { InputField } from "@needle-tools/engine/src/engine-components/ui/InputField";
+import { getParam, setParamWithoutReload } from "@needle-tools/engine/src/engine/engine_utils";
 
 export class sceneChanger extends Behaviour {
     // tell the component compiler that we want to reference an array of SceneAssets

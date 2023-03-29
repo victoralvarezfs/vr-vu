@@ -1,5 +1,5 @@
 import { Behaviour, GameObject, serializable } from "@needle-tools/engine";
-import { WaitForSeconds } from "@needle-tools/engine/engine/engine_coroutine";
+import { WaitForSeconds } from "@needle-tools/engine/src/engine/engine_coroutine";
 
 /*
     Summary:
@@ -52,6 +52,7 @@ export class ButtonsSelector extends Behaviour
 
         if(!this.buttons) return;
         var selectedButton = this.selected === null ? (this.buttons?.length - 1) : this.selected;
+        console.log("Selected button: "+selectedButton);
         this.select(selectedButton);
     }
 
@@ -73,8 +74,10 @@ export class ButtonsSelector extends Behaviour
         this.selected = index;
         if(!this.buttons) return;
         this.buttons[index].activeSelf = false;
+        console.log("on: "+this.buttons[index].name);
         if(!this.selectedButtons) return;
         this.selectedButtons[index].activeSelf = true;
+        console.log("on: "+this.selectedButtons[index].name);
     }
 
     //

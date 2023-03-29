@@ -11,6 +11,7 @@ namespace Needle.Typescript.GeneratedComponents
 		public bool @collapsed;
 		public UnityEngine.Events.UnityEvent @expand;
 		public UnityEngine.Events.UnityEvent @collapse;
+		public UnityEngine.Events.UnityEvent @idleDelay;
 		public void switchMenu(){}
 	}
 }

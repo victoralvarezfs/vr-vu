@@ -1,7 +1,6 @@
 import { Behaviour, serializable, GameObject, WebXR, Button} from "@needle-tools/engine";
 import { Object3D } from "three";
-import { isMobileDevice, isiOS, isMozillaXR, isSafari, isQuest, getParam }
-from "@needle-tools/engine/engine/engine_utils";
+import { isMobileDevice, isiOS, isMozillaXR, isSafari, isQuest, getParam } from "@needle-tools/engine/src/engine/engine_utils";
 import { VRButton }from "./VRButton";
 
 enum Platform {

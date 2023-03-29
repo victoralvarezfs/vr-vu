@@ -1,5 +1,5 @@
 import { Behaviour, serializeable, VideoPlayer } from "@needle-tools/engine";
-import { InputField } from "@needle-tools/engine/engine-components/ui/InputField";
+import { InputField } from "@needle-tools/engine/src/engine-components/ui/InputField";
 import { Object3D } from "three";
 import Hls from "hls.js";
 

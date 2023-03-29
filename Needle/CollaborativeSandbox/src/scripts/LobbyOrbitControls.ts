@@ -1,15 +1,15 @@
 import { Behaviour, GameObject } from "@needle-tools/engine";
-import { Camera } from "@needle-tools/engine/engine-components/Camera";
-import { LookAtConstraint } from "@needle-tools/engine/engine-components//LookAtConstraint";
-import { getWorldPosition, slerp } from "@needle-tools/engine/engine/engine_three_utils";
-import { RaycastOptions } from "@needle-tools/engine/engine/engine_physics";
-import { serializable } from "@needle-tools/engine/engine/engine_serialization_decorator";
-import { getParam, isMobileDevice } from "@needle-tools/engine/engine/engine_utils";
+import { Camera } from "@needle-tools/engine/src/engine-components/Camera";
+import { LookAtConstraint } from "@needle-tools/engine/src/engine-components//LookAtConstraint";
+import { getWorldPosition, slerp } from "@needle-tools/engine/src/engine/engine_three_utils";
+import { RaycastOptions } from "@needle-tools/engine/src/engine/engine_physics";
+import { serializable } from "@needle-tools/engine/src/engine/engine_serialization_decorator";
+import { getParam, isMobileDevice } from "@needle-tools/engine/src/engine/engine_utils";
 
 import { Box3, Object3D, PerspectiveCamera, Vector2, Vector3 } from "three";
 import { OrbitControls as ThreeOrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
-import { EventSystem, EventSystemEvents } from "@needle-tools/engine/engine-components/ui/EventSystem";
+import { EventSystem, EventSystemEvents } from "@needle-tools/engine/src/engine-components/ui/EventSystem";
 import { transformWithEsbuild } from "vite";
 import { PointerLockControls } from "@needle-tools/engine/node_modules/three/examples/jsm/controls/PointerLockControls";
 

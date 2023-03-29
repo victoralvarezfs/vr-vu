@@ -1,6 +1,6 @@
 import { Behaviour, serializable } from "@needle-tools/engine";
 import { StreamPlayer } from "./StreamPlayer";
-import { InputField } from "@needle-tools/engine/engine-components/ui/InputField";
+import { InputField } from "@needle-tools/engine/src/engine-components/ui/InputField";
 
 const videoSrc = "https://stream.mux.com/";
 const extension = ".m3u8";
