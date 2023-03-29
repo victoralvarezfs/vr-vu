@@ -19,5 +19,6 @@ MonoBehaviour:
   debugMode: 0
   generateReport: 0
   allowRunningProjectFixes: 1
-  npmSearchPathDirectories: []
+  npmSearchPathDirectories:
+  - /Users/brunodg/.nvm/versions/node/v19.8.1/bin
   useHotReload: 1

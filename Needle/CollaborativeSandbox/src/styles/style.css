@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+@tailwind base;
+@tailwind components;
+
 html {
     height: -webkit-fill-available;
 }
@@ -23,6 +26,12 @@ needle-engine {
 
 needle-engine canvas {
     position: absolute;
+}
+
+#app {
+    position: absolute;
+    width:100%;
+    height: 100%;
 }
 
 /* important to enable pointer events on overlay content entries by default again
@@ -80,3 +89,78 @@ needle-engine .webxr-button:disabled {
 needle-engine.presentation-mode .hide-in-presentation {
     display: none !important;
 }
+
+.tooltip {
+  @apply bg-tooltip-black border-white border-solid border-2 rounded-2xl flex flex-col justify-center items-center p-4 m-auto
+}
+
+.tooltip-button {
+  @apply text-white text-lg bg-gradient-to-br from-[#C228A7] via-[#D33397] to-[#E53F86] p-4 rounded-2xl
+}
+
+.mic-button {
+  @apply rounded-full w-20 h-20 text-white text-center bg-gradient-to-br from-[#C228A7] via-[#D33397] to-[#E53F86]
+}
+.button-360 {
+  @apply hidden xl:flex flex-col justify-end items-end
+}
+
+.button-leave {
+  @apply w-36 h-12 text-white hover:bg-gray-200 rounded-lg overflow-y-auto inline-flex items-center justify-center text-center bg-gradient-to-br from-[#C228A7] via-[#D33397] to-[#E53F86] border-solid border-2 border-white hover:border-black
+}
+
+.button-360-mobile {
+  @apply flex flex-col rounded-full justify-end items-center
+}
+
+.selected {
+  @apply bg-gradient-to-br from-[#C228A7] via-[#D33397] to-[#E53F86]
+}
+
+.drawer-navigation {
+  top: 0;
+  transform: translateX(-100%);
+  @apply fixed place-items-center z-10 top-0 left-0 w-64 h-screen p-4 overflow-y-auto transition-transform bg-gradient-to-b from-tooltip-black to-[#E53F86] border-solid border-2 rounded-md border-white
+}
+
+.sidebar-toggle {
+  @apply bg-tooltip-black text-white px-4 py-12 border-2 border-solid border-white rounded-lg
+}
+
+.drawer-open {
+  animation-name: drawer-open;
+  animation-fill-mode: forwards;
+}
+
+.drawer-closed {
+  animation-name: drawer-closed;
+  animation-fill-mode: forwards;
+}
+
+@keyframes drawer-open {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes drawer-closed {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+@tailwind utilities;
