@@ -42,14 +42,21 @@ export class Avatar extends Behaviour
         console.log("==OnEnable==");
         //this.startCoroutine(this.waitForConnection());
         await delay(1000);
+
+        if(this.tryGetConnID()) 
+        {
+            this.context.connection.beginListen("avatarColorUpdate", (data) => {
+                let rdata = data as AvatarColorUpdate;
+                console.log("===1==="+rdata.connId+"_"+rdata.color);
+                console.log("===2==="+rdata.guid+"_"+rdata.myColor);
+                console.log('received: ${JSON.stringify(data)}');
+            });           
+        }
+        /*
         this.context.connection.beginListen("test", (data) => {
             console.log("received: "+data);
         });
-        const myData = {
-            time: Date.now(),
-        };
-        console.log("SEND");
-        this.context.connection.send("test", myData);        
+         */       
     }
 
     
@@ -185,9 +192,15 @@ export class Avatar extends Behaviour
         
         const packedColor = ((col.r * 255) << 16) | ((col.g * 255) << 8) | (col.b * 255);
         let myData = new AvatarColorUpdate(this.connId, packedColor);
-        console.log("will broadcast: "+myData.connId+" and "+myData.color);
-        this.context.connection.send("avatarColorUpdate", myData, SendQueue.Immediate);
+        //console.log("will broadcast: "+myData.connId+" and "+myData.color);
+        const myNewData = {
+            guid: this.connId,
+            mycolor: packedColor
+        };
+        console.log("will send: "+myNewData);
+        this.context.connection.send("avatarColorUpdate", myNewData);
         //this.context.connection.send(this.connId, this.gameObject as IModel, SendQueue.Immediate);
+        
     }
     //#endregion
 }
