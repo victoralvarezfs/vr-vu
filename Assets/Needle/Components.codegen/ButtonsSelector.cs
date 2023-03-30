@@ -15,7 +15,6 @@ namespace Needle.Typescript.GeneratedComponents
 		public void OnEnable(){}
 		public void Expand(){}
 		public void Collapse(){}
-		public void select(float @index){}
 		public void selectButton(float @index){}
 	}
 }

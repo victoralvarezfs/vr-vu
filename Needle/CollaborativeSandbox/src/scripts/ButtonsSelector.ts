@@ -1,11 +1,14 @@
 import { Behaviour, GameObject, serializable } from "@needle-tools/engine";
 import { WaitForSeconds } from "@needle-tools/engine/src/engine/engine_coroutine";
+import { IMenu } from "./HamburguerMenu";
 
 /*
     Summary:
-
+    This class implements the IMenu interface in order to
+    switch two states for the menu. This class provides a
+    highlight effect to the selected button.
 */
-export class ButtonsSelector extends Behaviour
+export class ButtonsSelector extends Behaviour implements IMenu
 {
     //#region Fields and Properties
     @serializable(GameObject)
@@ -15,10 +18,7 @@ export class ButtonsSelector extends Behaviour
     @serializable(GameObject)
     selectedButtons : GameObject[] | null = null;
 
-    selectedColor : THREE.Color | null = null;
-    nonSelectedColor : THREE.Color | null = null;
-
-    private selected : number | null = null;
+    private selected : number | null = null;    
     //#endregion
     
     //#region Needle Engine Implementation
@@ -29,6 +29,10 @@ export class ButtonsSelector extends Behaviour
     //#endregion
 
     //#region Private Methods
+
+    // try setting up a boolean within the while condition
+    // and then try changing that value in runtime to see if it 
+    // cancels the async method
     private *waitForCollapsingMenu() {
         while (!this.destroyed && this.enabled) 
         {
@@ -41,6 +45,11 @@ export class ButtonsSelector extends Behaviour
         // console.log("STOP WAITING", this.name, this.destroyed);
     }
 
+    /**
+     * Turns on the collapsable menu and highlights the
+     * current selected button. Selects the last in the
+     * array by default if any is selected.
+     */
     Expand()
     {
         if(!this.collapsableMenu) return;
@@ -52,10 +61,12 @@ export class ButtonsSelector extends Behaviour
 
         if(!this.buttons) return;
         var selectedButton = this.selected === null ? (this.buttons?.length - 1) : this.selected;
-        console.log("Selected button: "+selectedButton);
         this.select(selectedButton);
     }
 
+    /**
+     * Turns off the collapsable menu. 
+     */
     Collapse()
     {
         if(!this.collapsableMenu) return;
@@ -64,32 +75,28 @@ export class ButtonsSelector extends Behaviour
 
     //#endregion
 
-    //#region Public Methods
-
-    //
-    //
-    //
-    select(index : number)
-    {
-        this.selected = index;
+    //#region Private Methods
+    private select(index : number)
+    {     
         if(!this.buttons) return;
+
+        if(this.selected != null)
+        {
+            if(!this.selectedButtons) return;
+            this.selectedButtons[this.selected].activeSelf = false;
+            this.selectedButtons[this.selected].visible = false;
+            this.buttons[this.selected].activeSelf = true;
+            this.buttons[this.selected].visible = true;
+        }
+
         this.buttons[index].activeSelf = false;
-        console.log("on: "+this.buttons[index].name);
+        this.buttons[index].visible = false;
         if(!this.selectedButtons) return;
         this.selectedButtons[index].activeSelf = true;
-        console.log("on: "+this.selectedButtons[index].name);
-    }
-
-    //
-    //
-    //
-    selectButton(index : number)
-    {
+        this.selectedButtons[index].visible = true;
         this.selected = index;
-        if(!this.buttons) return;
-        //get the image of the button and apply the selected color
-        if(!this.selectedButtons) return;
-        //this.selectedButtons[index].activeSelf = true;
     }
     //#endregion
+
+    
 }

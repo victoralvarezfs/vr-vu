@@ -7,12 +7,13 @@ namespace Needle.Typescript.GeneratedComponents
 {
 	public partial class HamburguerMenu : UnityEngine.MonoBehaviour
 	{
-		public UnityEngine.Transform[] @menuIcons;
+		public Needle.Typescript.GeneratedComponents.ButtonsSelector @buttonSelector;
+		public UnityEngine.GameObject[] @buttons;
 		public bool @collapsed;
-		public UnityEngine.Events.UnityEvent @expand;
-		public UnityEngine.Events.UnityEvent @collapse;
-		public UnityEngine.Events.UnityEvent @idleDelay;
 		public void switchMenu(){}
+		public void Expand(){}
+		public void Collapse(){}
+		public void startDelay(float @delayInMs){}
 	}
 }
 
