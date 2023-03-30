@@ -1,6 +1,7 @@
 import { Behaviour, serializeable, VideoPlayer } from "@needle-tools/engine";
 import { InputField } from "@needle-tools/engine/src/engine-components/ui/InputField";
 import { Object3D } from "three";
+import * as streams from "./requests/streams";
 import Hls from "hls.js";
 
 const videoSrc = "https://stream.mux.com/";
