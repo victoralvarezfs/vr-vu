@@ -35,6 +35,7 @@ export class Server {
       const sessionId = this.sessionManager.addSession(userId, playbackId);
       res.json({ sessionId });
     });
+
     this.app.delete(
       "/api/session/:sessionId",
       (req: Request, res: Response) => {
