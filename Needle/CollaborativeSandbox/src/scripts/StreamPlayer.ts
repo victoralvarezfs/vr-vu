@@ -34,6 +34,28 @@ export class StreamPlayer extends Behaviour {
     this.PlayStream(exampleUrl);
   }
 
+  secondCameraAngle() {
+    console.log("Stream Player script running...");
+    let exampleUrl: string =
+      videoSrc +
+      (this.playbackId == null || this.playbackId.text == ""
+        ? playbackIdExample
+        : this.playbackId.text) +
+      extension;
+    this.PlayStream(exampleUrl);
+  }
+
+  thirdCameraAngle() {
+    console.log("Stream Player script running...");
+    let exampleUrl: string =
+      videoSrc +
+      (this.playbackId == null || this.playbackId.text == ""
+        ? playbackIdExample
+        : this.playbackId.text) +
+      extension;
+    this.PlayStream(exampleUrl);
+  }
+
   openLivestreamSource(newurl:string) {    
     this.PlayStream(newurl);
   }

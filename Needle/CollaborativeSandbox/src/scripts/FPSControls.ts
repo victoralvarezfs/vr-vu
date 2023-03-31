@@ -26,7 +26,7 @@ export class FPSControls extends Behaviour
         this.fpsControls.movementSpeed = .1;
         this.fpsControls.lookSpeed  = 0.001;
         this.fpsControls.mouseDragOn = false;
-        //this.fpsControls.activeLook = false;
+        this.fpsControls.activeLook = false;
         this.fpsControls.update(this.delta);
         this.fpsControls.heightMax = 0;
         this.fpsControls.constrainVertical = true;

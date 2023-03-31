@@ -13,6 +13,8 @@ namespace Needle.Typescript.GeneratedComponents
 		// public undefined @hls; → Could not resolve C# type
 		public void start(){}
 		public void onPointerClick(){}
+		public void secondCameraAngle(){}
+		public void thirdCameraAngle(){}
 		public void openLivestreamSource(string @newurl){}
 	}
 }
