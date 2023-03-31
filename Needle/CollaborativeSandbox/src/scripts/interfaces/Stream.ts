@@ -7,6 +7,7 @@ export interface EventStream {
   streamKey: String;
   playbackId: String;
   status: String;
+  is360: Boolean;
   createdAt: Date;
   updatedAt: Date;
   UserId: String;
