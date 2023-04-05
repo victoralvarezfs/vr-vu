@@ -1,4 +1,7 @@
 import "@needle-tools/engine";
+import { EventStream } from "./scripts/interfaces/Stream";
+import API from "./scripts/services/API";
+import TestLogin from "./scripts/interfaces/TestLogin";
 
 import user from "../assets/imgs/user.svg";
 import avatar from "../assets/imgs/18_Boy.png";
@@ -6,6 +9,27 @@ import touchCommand from "../assets/imgs/noun-touch-884207.png";
 import touchRotate from "../assets/imgs/noun-rotate-110472.png";
 import touchGesture from "../assets/imgs/noun-gesture-2771732.png";
 import desktopImg from "../assets/imgs/tutorial-desktop.png";
+
+const api = new API();
+const test = new TestLogin();
+
+const credentials = { email: test.email, password: test.pass };
+
+localStorage.clear();
+
+if (!localStorage.token) {
+  await api
+    .login(credentials)
+    .then((response) => {
+      console.log("Login successful!");
+      console.log(`Full response: ${response.data}`);
+
+      const stream = api.getStream(test.id);
+    })
+    .catch((err) => {
+      console.log(`Error while logging: ${err}`);
+    });
+}
 
 const welcome = `
   <div id="tooltip-content-welcome" class="flex flex-col justify-center items-center">
