@@ -5,7 +5,7 @@ import axios, {
   AxiosResponse,
   AxiosError,
 } from "axios";
-import jwt from "jsonwebtoken";
+//import jwt from "jsonwebtoken";
 
 import { UserCredentials, LoginResponse } from "../interfaces/Login";
 import { EventStream } from "../interfaces/Stream";
@@ -58,7 +58,24 @@ export default class API {
 
   public async getStream(id: string): Promise<EventStream> {
     const response = await this.axiosInstance.get(`/api/streams/status/${id}`);
-    console.log(`Stream Found! StreamId: ${response.data.stream.id}`);
-    return response.data;
+
+    const stream: EventStream = {
+      image: response.data.stream.image,
+      id: response.data.stream.id,
+      title: response.data.stream.title,
+      price: response.data.stream.price,
+      streamKey: response.data.stream.streamKey,
+      playbackId: response.data.stream.playbackId,
+      status: response.data.stream.status,
+      is360: response.data.stream.is360,
+      createdAt: response.data.stream.createdAt,
+      updatedAt: response.data.stream.updatedAt,
+      UserId: response.data.stream.UserId,
+      CategoryId: response.data.stream.CategoryId,
+      User: response.data.stream.User,
+      playbackLink: `${this.videoSrc}/${response.data.stream.playbackId}${this.extension}`,
+    };
+
+    return stream;
   }
 }

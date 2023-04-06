@@ -6,6 +6,7 @@ export interface EventStream {
   date?: Date;
   streamKey: String;
   playbackId: String;
+  playback360Id?: String[];
   status: String;
   is360: Boolean;
   createdAt: Date;
@@ -16,6 +17,7 @@ export interface EventStream {
   Ratings?: RatingCheck[];
   Tags?: Tag[];
   avgRating?: Number;
+  playbackLink: String;
 }
 
 export interface User {

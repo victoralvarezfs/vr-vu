@@ -12,8 +12,9 @@ import desktopImg from "../assets/imgs/tutorial-desktop.png";
 
 const api = new API();
 const test = new TestLogin();
-
 const credentials = { email: test.email, password: test.pass };
+
+let logSuccess = false;
 
 localStorage.clear();
 
@@ -23,12 +24,19 @@ if (!localStorage.token) {
     .then((response) => {
       console.log("Login successful!");
       console.log(`Full response: ${response.data}`);
-
-      const stream = api.getStream(test.id);
+      logSuccess = true;
     })
     .catch((err) => {
       console.log(`Error while logging: ${err}`);
     });
+}
+
+if (logSuccess) {
+  const stream = await api.getStream(test.id);
+
+  if (stream != undefined) {
+    console.log(`Stream found! Playback Link: ${stream.playbackLink}`);
+  }
 }
 
 const welcome = `
