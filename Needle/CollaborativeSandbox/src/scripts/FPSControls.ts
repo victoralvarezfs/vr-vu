@@ -22,8 +22,8 @@ export class FPSControls extends Behaviour
           this._cameraObject = cam;
         this.fpsControls = new FirstPersonControls(this._cameraObject as THREE.Camera, this.context.domElement);
         this.fpsControls.enabled = true;
-        this.delta = 1;
-        this.fpsControls.movementSpeed = .1;
+        this.delta = 0.5;
+        this.fpsControls.movementSpeed = .065;
         this.fpsControls.lookSpeed  = 0.001;
         this.fpsControls.mouseDragOn = false;
         //this.fpsControls.activeLook = false;
@@ -33,9 +33,11 @@ export class FPSControls extends Behaviour
         //this.fpsControls.
     }
 
+    
     update(){
       if(!this.fpsControls) return;
       if(!this.delta) return;
+      /*
       if (this.context.input.getPointerDown(0) || this.context.input.getPointerDown(1) || this.context.input.getPointerDown(2)) {
         console.log("get pointer down ");
         //this.fpsControls.lookSpeed = 0;
@@ -48,6 +50,7 @@ export class FPSControls extends Behaviour
         //this.fpsControls.lookSpeed = 0;
         this.fpsControls.activeLook = false;
       }
+      */
       this.fpsControls.update(this.delta);
     }
 }
